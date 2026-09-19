@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio & Layanan Interaktif - Web Developer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER & NAVIGASI -->
+  <header class="main-header">
+    <div class="logo">Portofolio IT Del</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#contact">Layanan & Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- KONTEN UTAMA -->
+  <main class="main-content">
+    
+    <!-- SECTION 1: TENTANG SAYA -->
+    <section id="about" class="card-section">
+      <article class="profile-card">
+        <div class="card-header-banner"></div>
+        <div class="card-body">
+          <div class="avatar-container">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop" alt="Foto Profil Mahasiswa" class="avatar-img">
+            <span class="status-badge">Aktif</span>
+          </div>
+          <h1 class="user-name">Nama Mahasiswa</h1>
+          <p class="user-role">S1 Sistem Informasi - Institut Teknologi Del</p>
+          <p class="user-bio">Antusias dalam perancangan antarmuka web modern, kode bersih, dan aksesibilitas ramah pengguna.</p>
+          
+          <div class="skills-section">
+            <h2 class="section-title">Keahlian Utama</h2>
+            <ul class="skills-list">
+              <li class="skill-tag">HTML5 Semantic</li>
+              <li class="skill-tag">Modern CSS</li>
+              <li class="skill-tag">Flexbox & Grid</li>
+              <li class="skill-tag">Git & GitHub</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 2: PORTOFOLIO KARYA & TABEL CAPAIAN -->
+    <section id="projects" class="card-section">
+      <h2>Riwayat Mata Kuliah & Proyek</h2>
+      <div class="table-container">
+        <table>
+          <caption>Rekapitulasi Capaian Akademik & Proyek Web</caption>
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Mata Kuliah / Proyek</th>
+              <th scope="col">Teknologi</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Dasar Pemrograman Web</td>
+              <td>HTML5, CSS3</td>
+              <td>Selesai</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Pengembangan Aplikasi Web</td>
+              <td>Flexbox, Grid, Git</td>
+              <td>Sedang Berjalan</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Total Proyek Diselesaikan</td>
+              <td>1 Proyek</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FORMULIR LAYANAN & KONTAK -->
+    <section id="contact" class="card-section">
+      <h2>Formulir Konsultasi & Layanan</h2>
+      <form class="custom-form" action="#" method="POST">
+        
+        <fieldset class="form-fieldset">
+          <legend class="form-legend">Data Identitas</legend>
+          
+          <div class="form-group">
+            <label for="nama" class="form-label">Nama Lengkap <span class="req">*</span></label>
+            <input type="text" id="nama" name="nama" class="form-control" required placeholder="Contoh: Budi Santoso">
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Kampus (@del.ac.id) <span class="req">*</span></label>
+            <input type="email" id="email" name="email" class="form-control" required placeholder="nama@del.ac.id">
+            <small id="email-help" class="form-help">Gunakan email institusi Del resmi untuk verifikasi.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="telepon" class="form-label">Nomor WhatsApp <span class="req">*</span></label>
+            <input type="tel" id="telepon" name="telepon" class="form-control" required placeholder="08123456789">
+          </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+          <legend class="form-legend">Detail Permintaan</legend>
+
+          <div class="form-group">
+            <label for="layanan" class="form-label">Jenis Layanan</label>
+            <select id="layanan" name="layanan" class="form-control">
+              <option value="frontend">Frontend Web Development</option>
+              <option value="uiux">UI/UX Design Review</option>
+              <option value="consultation">Konsultasi Tugas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="anggaran" class="form-label">Perkiraan Skala Proyek (Skala 1-5)</label>
+            <input type="number" id="anggaran" name="anggaran" min="1" max="5" class="form-control" value="1">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Metode Komunikasi Preferensi:</label>
+            <div class="radio-group">
+              <input type="radio" id="pref-email" name="preferensi" value="email" checked>
+              <label for="pref-email">Email</label>
+              <input type="radio" id="pref-wa" name="preferensi" value="wa">
+              <label for="pref-wa">WhatsApp</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <input type="checkbox" id="persetujuan" name="persetujuan" required>
+              <label for="persetujuan">Saya menyetujui syarat & ketentuan layanan. <span class="req">*</span></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pesan" class="form-label">Deskripsi Pertanyaan / Permintaan <span class="req">*</span></label>
+            <textarea id="pesan" name="pesan" class="form-control" rows="4" required placeholder="Tuliskan detail kebutuhan Anda..."></textarea>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn-submit">Kirim Permintaan Konsultasi</button>
+      </form>
+    </section>
+
+    <!-- ASIDE (INFORMASI TAMBAHAN) -->
+    <aside class="info-aside">
+      <h3>Catatan Penting</h3>
+      <p>Layanan konsultasi ini diproses pada jam kerja operasional kampus Institut Teknologi Del.</p>
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <p>&copy; 2026 S1 Sistem Informasi - Institut Teknologi Del. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
