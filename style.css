@@ -1,4 +1,78 @@
-/* 1. Universal CSS Reset & Base Styling */
+/* ==========================================================================
+   1. CSS CUSTOM PROPERTIES (VARIABLES) - Minimal 6 Variabel Global
+   ========================================================================== */
+:root {
+    --primary-brand: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --surface-bg: #f8f9fa;
+    --card-radius: 16px;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-lift: 0 12px 28px rgba(13, 110, 253, 0.15);
+}
+
+/* ==========================================================================
+   2. GLOBAL STYLES & TYPOGRAPHY
+   ========================================================================== */
+body {
+    background-color: var(--surface-bg);
+    color: #333333;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   3. CUSTOM OVERRIDES & COMPONENTS
+   ========================================================================== */
+
+/* Card Section Overrides & Transitions */
+.card-section {
+    background: #ffffff;
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Profile Avatar Custom Style */
+.avatar-img {
+    border: 4px solid #ffffff;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease;
+}
+
+.avatar-img:hover {
+    transform: scale(1.05);
+}
+
+/* Skill Tags (Pills) */
+.skills-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background-color: rgba(13, 110, 253, 0.1);
+    color:Berikut adalah CSS modern, bersih, dan responsif menggunakan CSS Grid, Flexbox, serta CSS Custom Properties (Variables) yang mudah disesuaikan.
+
+```css
+/* Reset & Base Styles */
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --transition: all 0.25s ease-in-out;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -6,272 +80,143 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #f8fafc;
-  color: #334e68;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
-  padding: 20px;
+  color: var(--text-main);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header & Navigasi */
-.main-header {
+/* Layout Wrapper */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header & Navigation */
+header {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
-  padding: 16px 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.05);
-  margin-bottom: 24px;
+  padding: 1rem 0;
 }
 
 .logo {
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #0284c7;
-  font-size: 1.2rem;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.nav-links a {
+  color: var(--primary-color);
   text-decoration: none;
-  color: #334155;
-  font-weight: 600;
-  transition: color 0.2s;
 }
 
-.nav-links a:hover {
-  color: #0284c7;
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
 }
 
-/* Layout Utama */
-.main-content {
-  max-width: 800px;
-  margin: 0 auto;
+nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+/* Main Content Grid */
+main {
+  flex: 1;
+  padding: 2.5rem 0;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card / Content Component */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
-.card-section {
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.05);
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Section Kartu Profil */
-.profile-card {
-  border-radius: 16px;
-  overflow: hidden;
+.card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.card-header-banner {
-  height: 100px;
-  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
 }
 
-.card-body {
-  padding: 0 16px;
-  text-align: center;
-}
-
-.avatar-container {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  margin: -45px auto 12px auto;
-}
-
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 4px solid #ffffff;
-  object-fit: cover;
-}
-
-.status-badge {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  background-color: #10b981;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 10px;
-  border: 2px solid #ffffff;
-}
-
-.user-name {
-  font-size: 18px;
-  color: #0f172a;
-}
-
-.user-role {
-  font-size: 13px;
-  color: #0284c7;
-  margin-bottom: 8px;
-}
-
-.user-bio {
-  font-size: 13px;
-  color: #64748b;
-  margin-bottom: 16px;
-}
-
-.skills-list {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.skill-tag {
-  background-color: #f1f5f9;
-  color: #334155;
-  font-size: 11px;
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 12px;
-}
-
-/* Tabel */
-.table-container {
-  overflow-x: auto;
-  margin-top: 16px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 14px;
-}
-
-caption {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #0369a1;
-}
-
-th, td {
-  padding: 10px 12px;
-  border: 1px solid #cbd5e1;
-}
-
-thead {
-  background-color: #f1f5f9;
-}
-
-tfoot {
-  font-weight: bold;
-  background-color: #f8fafc;
-}
-
-/* Formulir */
-.custom-form {
-  margin-top: 16px;
-}
-
-.form-fieldset {
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.form-legend {
-  font-weight: 700;
-  color: #0369a1;
-  padding: 0 6px;
-  font-size: 13px;
-}
-
-.form-group {
-  margin-bottom: 12px;
-}
-
-.form-label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.req { color: #ef4444; }
-
-.form-control {
-  width: 100%;
-  padding: 8px 12px;
-  font-size: 13px;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 6px;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: #0284c7;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18);
-}
-
-.form-help {
-  font-size: 11px;
-  color: #64748b;
-  display: block;
-  margin-top: 2px;
-}
-
-.radio-group, .checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-}
-
-.btn-submit {
-  width: 100%;
-  background: #0284c7;
-  color: #ffffff;
+  color: #fff;
+  background-color: var(--primary-color);
   border: none;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 6px;
+  border-radius: calc(var(--radius) / 2);
   cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.btn-submit:hover {
-  background: #0369a1;
-}
-
-/* Aside & Footer */
-.info-aside {
-  background: #e0f2fe;
-  padding: 16px;
-  border-radius: 10px;
-  font-size: 13px;
-}
-
-.main-footer {
+  text-decoration: none;
   text-align: center;
-  margin-top: 30px;
-  font-size: 12px;
-  color: #94a3b8;
+  transition: var(--transition);
 }
 
-/* Responsif (Media Query) */
-@media (max-width: 768px) {
-  .main-header {
+.btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Footer */
+footer {
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+/* Media Queries untuk Perangkat Seluler */
+@media (max-width: 640px) {
+  .nav-container {
     flex-direction: column;
-    gap: 12px;
+    gap: 1rem;
+  }
+  
+  nav ul {
+    gap: 1rem;
   }
 }
