@@ -1,222 +1,447 @@
 /* ==========================================================================
-   1. CSS CUSTOM PROPERTIES (VARIABLES) - Minimal 6 Variabel Global
+   1. CSS CUSTOM PROPERTIES (VARIABLES) — Identitas Personal Grasia
+   Palet 60-30-10: 60% netral lavender, 30% teks gelap, 10% aksen ungu/amber
    ========================================================================== */
 :root {
-    --primary-brand: #0d6efd;
-    --primary-hover: #0b5ed7;
-    --surface-bg: #f8f9fa;
-    --card-radius: 16px;
-    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
-    --shadow-lift: 0 12px 28px rgba(13, 110, 253, 0.15);
+  --primary-brand: #6d28d9;      /* ungu — warna identitas utama */
+  --primary-hover: #5b21b6;
+  --accent-warm: #f59e0b;        /* amber — aksen 10% */
+  --surface-bg: #f7f5fc;
+  --surface-alt: #efe9fb;
+  --card-bg: #ffffff;
+  --text-main: #1e1b2e;
+  --text-muted: #6b6478;
+  --border-color: #e4defa;
+  --card-radius: 16px;
+  --shadow-soft: 0 4px 16px rgba(31, 20, 60, 0.06);
+  --shadow-lift: 0 14px 30px -6px rgba(109, 40, 217, 0.18);
+  --transition-base: 0.25s ease;
 }
 
 /* ==========================================================================
    2. GLOBAL STYLES & TYPOGRAPHY
    ========================================================================== */
+* , *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-    background-color: var(--surface-bg);
-    color: #333333;
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
+  background-color: var(--surface-bg);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, .navbar-brand {
+  font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.text-accent {
+  color: var(--accent-warm);
 }
 
 /* ==========================================================================
-   3. CUSTOM OVERRIDES & COMPONENTS
+   3. NAVBAR OVERRIDE — identitas warna, bukan bg-dark polos
    ========================================================================== */
-
-/* Card Section Overrides & Transitions */
-.card-section {
-    background: #ffffff;
-    border-radius: var(--card-radius);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+.site-navbar {
+  background: linear-gradient(120deg, var(--primary-brand) 0%, #4c1d95 100%);
 }
 
-/* Profile Avatar Custom Style */
+/* Combinator: anak langsung dari .navbar-nav, bukan .navbar-brand */
+.navbar-nav > .nav-item > .nav-link:not(.active) {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color var(--transition-base);
+}
+
+.navbar-nav > .nav-item > .nav-link:hover,
+.navbar-nav > .nav-item > .nav-link.active {
+  color: #ffffff;
+}
+
+/* Adjacent sibling combinator: beri jarak lebih pada item nav setelah item lain */
+.nav-item + .nav-item {
+  margin-left: 2px;
+}
+
+/* ==========================================================================
+   4. HERO / PROFIL SECTION
+   ========================================================================== */
+.hero-section {
+  padding: 4rem 0 3rem;
+  background: linear-gradient(180deg, var(--surface-alt) 0%, var(--surface-bg) 100%);
+}
+
+.avatar-wrap {
+  position: relative;
+  display: inline-block;
+}
+
 .avatar-img {
-    border: 4px solid #ffffff;
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.3s ease;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  box-shadow: var(--shadow-lift);
+  transition: transform var(--transition-base);
 }
 
 .avatar-img:hover {
-    transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* Skill Tags (Pills) */
+.status-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 2px solid #ffffff;
+}
+
+.role-badge {
+  background-color: rgba(109, 40, 217, 0.1);
+  color: var(--primary-brand);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(109, 40, 217, 0.2);
+}
+
+.hero-name {
+  font-weight: 800;
+  font-size: 2.1rem;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.hero-role {
+  color: var(--primary-brand);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.hero-bio {
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+.section-subtitle {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0.6rem;
+}
+
 .skills-list {
-    list-style: none;
-    padding-left: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 0;
+  margin: 0;
 }
 
 .skill-tag {
-    background-color: rgba(13, 110, 253, 0.1);
-    color:Berikut adalah CSS modern, bersih, dan responsif menggunakan CSS Grid, Flexbox, serta CSS Custom Properties (Variables) yang mudah disesuaikan.
-
-```css
-/* Reset & Base Styles */
-:root {
-  --primary-color: #4f46e5;
-  --primary-hover: #4338ca;
-  --bg-color: #f8fafc;
-  --card-bg: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --radius: 12px;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --transition: all 0.25s ease-in-out;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  line-height: 1.6;
-  color: var(--text-main);
-  background-color: var(--bg-color);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Layout Wrapper */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Header & Navigation */
-header {
-  background-color: var(--card-bg);
-  border-bottom: 1px solid var(--border-color);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-nav ul {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text-muted);
-  font-weight: 500;
-  transition: var(--transition);
-}
-
-nav a:hover {
-  color: var(--primary-color);
-}
-
-/* Main Content Grid */
-main {
-  flex: 1;
-  padding: 2.5rem 0;
-}
-
-.grid-layout {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Card / Content Component */
-.card {
-  background-color: var(--card-bg);
-  border-radius: var(--radius);
+  background-color: #ffffff;
   border: 1px solid var(--border-color);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.card h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 1.25rem;
-  flex-grow: 1;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
+  color: var(--text-main);
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #fff;
-  background-color: var(--primary-color);
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: all var(--transition-base);
+}
+
+/* Pseudo-class struktural: warnai tag ganjil sedikit berbeda */
+.skills-list > .skill-tag:nth-child(odd) {
+  border-color: rgba(109, 40, 217, 0.35);
+}
+
+.skill-tag:hover {
+  background-color: var(--primary-brand);
+  color: #ffffff;
+  border-color: var(--primary-brand);
+  transform: translateY(-2px);
+}
+
+/* Grouping selector dengan :is() */
+:is(.btn-brand, .btn-outline-brand) {
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  transition: all var(--transition-base);
+}
+
+.btn-brand {
+  background-color: var(--primary-brand);
+  color: #ffffff;
   border: none;
-  border-radius: calc(var(--radius) / 2);
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  transition: var(--transition);
 }
 
-.btn:hover {
+.btn-brand:hover {
   background-color: var(--primary-hover);
+  color: #ffffff;
+  box-shadow: var(--shadow-lift);
 }
 
-/* Footer */
-footer {
-  background-color: var(--card-bg);
-  border-top: 1px solid var(--border-color);
-  padding: 1.5rem 0;
-  text-align: center;
+.btn-outline-brand {
+  background-color: transparent;
+  color: var(--primary-brand);
+  border: 1.5px solid var(--primary-brand);
+}
+
+.btn-outline-brand:hover {
+  background-color: var(--primary-brand);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   5. SECTION UMUM
+   ========================================================================== */
+.section-block {
+  padding: 3.5rem 0;
+}
+
+.alt-bg {
+  background-color: var(--surface-alt);
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-main);
+}
+
+.section-title i {
+  color: var(--primary-brand);
+}
+
+.section-desc {
   color: var(--text-muted);
-  font-size: 0.875rem;
-  margin-top: auto;
+  margin-bottom: 1.75rem;
 }
 
-/* Media Queries untuk Perangkat Seluler */
-@media (max-width: 640px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 1rem;
+/* ==========================================================================
+   6. PROJECT CARDS — micro-interaction hover (pseudo-element)
+   ========================================================================== */
+.project-card {
+  position: relative;
+  border-radius: var(--card-radius);
+  background-color: var(--card-bg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background-color: var(--accent-warm);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+}
+
+.tech-badge {
+  background-color: rgba(109, 40, 217, 0.12);
+  color: var(--primary-brand);
+}
+
+.tech-badge-alt {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #92600a;
+}
+
+.tech-badge-dark {
+  background-color: var(--text-main);
+  color: #ffffff;
+}
+
+.modal-list li {
+  margin-bottom: 0.4rem;
+}
+
+/* ==========================================================================
+   7. TABEL RIWAYAT
+   ========================================================================== */
+.custom-table-wrap {
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.custom-table {
+  background-color: var(--card-bg);
+  margin-bottom: 0;
+}
+
+.custom-table caption {
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  caption-side: top;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.custom-table thead th {
+  background-color: var(--primary-brand);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+}
+
+/* nth-child untuk baris zebra */
+.custom-table tbody tr:nth-child(even) {
+  background-color: var(--surface-alt);
+}
+
+.status-done { background-color: #16a34a; color: #fff; }
+.status-progress { background-color: var(--accent-warm); color: #fff; }
+.status-plan { background-color: #94a3b8; color: #fff; }
+
+.list-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+}
+
+.check-list, .plan-list {
+  color: var(--text-muted);
+  padding-left: 1.2rem;
+}
+
+.check-list li, .plan-list li {
+  margin-bottom: 0.4rem;
+}
+
+/* ==========================================================================
+   8. FORMULIR — fieldset, legend, focus-within, validasi
+   ========================================================================== */
+.contact-card {
+  border-radius: var(--card-radius);
+  background-color: var(--card-bg);
+}
+
+.form-fieldset {
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.25rem 0.75rem;
+  margin-bottom: 1.5rem;
+  transition: border-color var(--transition-base);
+}
+
+/* Pseudo-class :focus-within — soroti fieldset saat salah satu anaknya fokus */
+.form-fieldset:focus-within {
+  border-color: var(--primary-brand);
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+}
+
+.form-legend {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-brand);
+  padding: 0 0.4rem;
+  width: auto;
+  float: none;
+}
+
+.req {
+  color: #dc2626;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-brand);
+  box-shadow: 0 0 0 3.5px rgba(109, 40, 217, 0.15);
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-brand);
+  border-color: var(--primary-brand);
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.15);
+}
+
+/* ==========================================================================
+   9. ASIDE & FOOTER
+   ========================================================================== */
+.info-aside {
+  padding: 0 0 3rem;
+}
+
+.note-box {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.note-box h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #92600a;
+}
+
+.note-box p {
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.main-footer {
+  background-color: var(--text-main);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE — MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 1.6rem;
   }
-  
-  nav ul {
-    gap: 1rem;
+
+  .hero-actions .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-block {
+    padding: 2.5rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .avatar-img {
+    width: 140px;
+    height: 140px;
   }
 }
