@@ -116,13 +116,16 @@ graph TB
 
 | Metrik                          | Cold Load (cache kosong) | Warm Load (cache terpakai) |
 | :------------------------------- | :------------------------: | :---------------------------: |
-| Time to First Byte (TTFB)       | *(isi setelah pengujian)*  | *(isi setelah pengujian)*     |
-| First Contentful Paint (FCP)    | *(isi setelah pengujian)*  | *(isi setelah pengujian)*     |
-| Status `projects.json`          | `200 OK`                   | `200 OK` / `304 Not Modified` |
-| Ukuran transfer `projects.json` | *(isi, mis. 1.2 KB)*       | *(isi, mis. 0 B jika 304)*    |
-| Total waktu load halaman        | *(isi setelah pengujian)*  | *(isi setelah pengujian)*     |
+| Time to First Byte (TTFB)       | ~89 ms                     | ~83 ms                        |
+| Status `projects.json`          | `200 OK`                   | `304 Not Modified`            |
+| Ukuran transfer `projects.json` | 1.1 kB                     | 0.1 kB                        |
+| Total waktu load halaman        | 1.51 s                     | 375 ms                        |
 
-**Tempel screenshot tab Network (Waterfall) di sini setelah pengujian dilakukan.**
+   **Cold Load (Disable Cache aktif — Status 200):**
+   ![Network Cold Load](docs/network-cold-load.png)
+
+   **Warm Load (Cache aktif — Status 304 Not Modified):**
+   ![Network Warm Load](docs/network-warm-load.png)
 
 ### Catatan Analisis
 *(Tulis 2–3 kalimat kesimpulanmu di sini — misalnya: apakah warm load jauh lebih cepat dari cold load?
