@@ -1,0 +1,22 @@
+{
+ "name": "Grasia Gayatri Simanullang",
+  "nim": "12S24027",
+  "class": "S1 Sistem Informasi — Institut Teknologi Del",
+  "role": "Web Developer & UI/UX Enthusiast",
+  "status": "Aktif",
+  "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop",
+  "bio": "Antusias dalam perancangan antarmuka web modern, penulisan kode yang bersih, serta aksesibilitas yang ramah bagi seluruh pengguna. Fokus pada perpaduan estetika dan fungsi menggunakan HTML5 semantik, CSS modern, Bootstrap 5, dan arsitektur decoupled berbasis JavaScript ES6+.",
+  "skills": [
+    "HTML5 Semantic",
+    "Modern CSS",
+    "Bootstrap 5",
+    "Flexbox & Grid",
+    "JavaScript ES6+",
+    "Git & GitHub"
+  ],
+  "stats": {
+    "projects": 4,
+    "gpa": 3.84,
+    "accessibility": "100%"
+  }
+}

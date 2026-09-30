@@ -4,256 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grasia Gayatri Simanullang — Portofolio & Layanan Web</title>
-
-  <!-- Bootstrap 5.3 CSS -->
+ 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+ 
   <!-- Custom CSS (dimuat SETELAH Bootstrap) -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/custom-style.css">
 </head>
 <body>
-
+ 
   <!-- ============ HEADER & NAVBAR ============ -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark site-navbar sticky-top shadow-sm py-3">
       <div class="container">
         <a class="navbar-brand fw-bold" href="#hero">Grasia<span class="text-accent">.Dev</span></a>
-
+ 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false"
                 aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
+ 
         <div class="collapse navbar-collapse" id="mainNavbar">
           <ul class="navbar-nav ms-auto gap-lg-2">
             <li class="nav-item"><a class="nav-link active" href="#hero">Beranda</a></li>
             <li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
             <li class="nav-item"><a class="nav-link" href="#riwayat">Riwayat</a></li>
-            <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+            <li class="nav-item position-relative">
+              <a class="nav-link" href="#kontak">
+                Kontak
+                <span id="orderBadge" class="badge order-badge d-none">0</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
-
+ 
   <main>
-
-    <!-- ============ SECTION: HERO / TENTANG SAYA ============ -->
+ 
+    <!-- ============ HERO — dirender dinamis dari data/profile.json ============ -->
     <section id="hero" class="hero-section">
       <div class="container">
-        <div class="row align-items-center g-5">
-
+        <div class="row align-items-center g-5" id="profileContainer">
+          <!-- Skeleton loading sementara profile.json dimuat -->
           <div class="col-lg-4 text-center">
-            <div class="avatar-wrap">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop"
-                   alt="Foto Profil Grasia Gayatri Simanullang" class="avatar-img">
-              <span class="status-badge"><i class="bi bi-check-circle-fill"></i> Aktif</span>
-            </div>
+            <div class="skeleton-avatar mx-auto"></div>
           </div>
-
           <div class="col-lg-8">
-            <span class="badge role-badge mb-3"><i class="bi bi-mortarboard-fill me-1"></i> S1 Sistem Informasi — Institut Teknologi Del</span>
-            <h1 class="hero-name">Grasia Gayatri Simanullang</h1>
-            <p class="hero-role">Web Developer &amp; UI/UX Enthusiast</p>
-            <p class="hero-bio">
-              Antusias dalam perancangan antarmuka web modern, penulisan kode yang bersih, serta
-              aksesibilitas yang ramah bagi seluruh pengguna. Fokus pada perpaduan estetika dan fungsi
-              menggunakan HTML5 semantik, CSS modern, dan Bootstrap 5.
-            </p>
-
-            <h2 class="section-subtitle">Keahlian Utama</h2>
-            <ul class="skills-list">
-              <li class="skill-tag">HTML5 Semantic</li>
-              <li class="skill-tag">Modern CSS</li>
-              <li class="skill-tag">Bootstrap 5</li>
-              <li class="skill-tag">Flexbox &amp; Grid</li>
-              <li class="skill-tag">Git &amp; GitHub</li>
-            </ul>
-
-            <div class="hero-actions mt-4">
-              <a href="#portofolio" class="btn btn-brand">Lihat Portofolio</a>
-              <a href="#kontak" class="btn btn-outline-brand">Hubungi Saya</a>
-            </div>
+            <div class="skeleton-line w-25 mb-3"></div>
+            <div class="skeleton-line w-75 mb-2" style="height:2rem;"></div>
+            <div class="skeleton-line w-50 mb-3"></div>
+            <div class="skeleton-line w-100 mb-1"></div>
+            <div class="skeleton-line w-100"></div>
           </div>
-
         </div>
       </div>
     </section>
-
-    <!-- ============ SECTION: PORTOFOLIO KARYA (GRID + MODAL) ============ -->
+ 
+    <!-- ============ PORTOFOLIO — Dynamic CSR + Filter + UI States ============ -->
     <section id="portofolio" class="section-block">
       <div class="container">
         <h2 class="section-title"><i class="bi bi-folder2-open"></i> Portofolio Proyek</h2>
-        <p class="section-desc">Kumpulan proyek yang telah saya kembangkan sepanjang perkuliahan Pemrograman dan Pengujian Web.</p>
-
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-
-          <!-- Kartu 1 -->
-          <div class="col">
-            <div class="card project-card h-100 shadow-sm border-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop"
-                   class="card-img-top" alt="Tampilan proyek Personal Portfolio">
-              <div class="card-body d-flex flex-column">
-                <span class="badge tech-badge align-self-start mb-2">HTML / CSS</span>
-                <h5 class="card-title fw-bold">Personal Portfolio</h5>
-                <p class="card-text text-muted small flex-grow-1">Halaman portofolio responsif tingkat dasar menggunakan HTML5 semantik.</p>
-                <button class="btn btn-outline-brand btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalProyek1">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kartu 2 -->
-          <div class="col">
-            <div class="card project-card h-100 shadow-sm border-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&auto=format&fit=crop"
-                   class="card-img-top" alt="Tampilan proyek Service Portal">
-              <div class="card-body d-flex flex-column">
-                <span class="badge tech-badge align-self-start mb-2">Bootstrap 5</span>
-                <h5 class="card-title fw-bold">Service Portal</h5>
-                <p class="card-text text-muted small flex-grow-1">Portal layanan interaktif modern berbasis Bootstrap 5.3 &amp; CSS Variables.</p>
-                <button class="btn btn-outline-brand btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalProyek2">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kartu 3 -->
-          <div class="col">
-            <div class="card project-card h-100 shadow-sm border-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop"
-                   class="card-img-top" alt="Tampilan Dashboard Akademik">
-              <div class="card-body d-flex flex-column">
-                <span class="badge tech-badge-alt align-self-start mb-2">Data Viz</span>
-                <h5 class="card-title fw-bold">Dashboard Akademik</h5>
-                <p class="card-text text-muted small flex-grow-1">Visualisasi ringkas rekapitulasi nilai dan capaian mata kuliah.</p>
-                <button class="btn btn-outline-brand btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalProyek3">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kartu 4 -->
-          <div class="col">
-            <div class="card project-card h-100 shadow-sm border-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&auto=format&fit=crop"
-                   class="card-img-top" alt="Tampilan pengelolaan GitHub Pages">
-              <div class="card-body d-flex flex-column">
-                <span class="badge tech-badge-dark align-self-start mb-2">Git Workflow</span>
-                <h5 class="card-title fw-bold">Proyek GitHub Pages</h5>
-                <p class="card-text text-muted small flex-grow-1">Manajemen branching dan publikasi otomatis melalui GitHub Pages.</p>
-                <button class="btn btn-outline-brand btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalProyek4">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
+        <p class="section-desc">Data proyek dimuat secara asinkron dari <code>data/projects.json</code> melalui <code>api-service.js</code>.</p>
+ 
+        <!-- Filter kategori, dirender dinamis sesuai kategori yang tersedia di data -->
+        <div id="filterBar" class="filter-bar mb-4 d-flex flex-wrap gap-2"></div>
+ 
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="projectsGrid">
+          <!-- Diisi dinamis oleh app.js: skeleton -> kartu proyek / empty / error -->
         </div>
       </div>
     </section>
-
-    <!-- ============ MODALS DETAIL PROYEK (4 modal, konten berbeda) ============ -->
-    <div class="modal fade" id="modalProyek1" tabindex="-1" aria-labelledby="modalProyek1Label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalProyek1Label">Personal Portfolio</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+ 
+    <!-- ============ UNIVERSAL DYNAMIC MODAL — satu-satunya modal untuk semua proyek ============ -->
+    <div class="modal fade" id="universalProjectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header modal-header-brand">
+            <h5 class="modal-title fw-bold text-white" id="projectModalTitle">Judul Proyek</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
           </div>
-          <div class="modal-body">
-            <p>Halaman portofolio pribadi yang dibangun pada Minggu 2 menggunakan HTML5 semantik murni dan CSS custom tanpa framework.</p>
-            <ul class="modal-list">
-              <li>Struktur semantik: <code>header</code>, <code>main</code>, <code>section</code>, <code>footer</code></li>
-              <li>Tata letak Flexbox untuk kartu profil</li>
-              <li>Palet warna 60-30-10 dengan CSS Variables</li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">Tutup</button>
+          <div class="modal-body p-4" id="projectModalBody">
+            <!-- Konten diinjeksi secara dinamis via JavaScript sesuai project-id yang diklik -->
           </div>
         </div>
       </div>
     </div>
-
-    <div class="modal fade" id="modalProyek2" tabindex="-1" aria-labelledby="modalProyek2Label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalProyek2Label">Service Portal</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body">
-            <p>Portal layanan konsultasi yang direfaktor pada Minggu 3 menggunakan Bootstrap 5.3, lengkap dengan formulir Floating Labels dan validasi visual.</p>
-            <ul class="modal-list">
-              <li>Grid 12-kolom responsif (<code>row-cols-*</code>)</li>
-              <li>Navbar collapse dengan tombol hamburger</li>
-              <li>Formulir dengan <code>.form-floating</code> &amp; <code>.input-group</code></li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">Tutup</button>
-          </div>
+ 
+    <!-- ============ LAYANAN — dirender dinamis dari data/services.json ============ -->
+    <section id="layanan" class="section-block alt-bg">
+      <div class="container">
+        <h2 class="section-title"><i class="bi bi-bag-check"></i> Katalog Layanan</h2>
+        <p class="section-desc">Paket layanan dimuat secara asinkron dari <code>data/services.json</code>.</p>
+        <div class="row g-4" id="servicesGrid">
+          <!-- Diisi dinamis oleh app.js -->
         </div>
       </div>
-    </div>
-
-    <div class="modal fade" id="modalProyek3" tabindex="-1" aria-labelledby="modalProyek3Label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalProyek3Label">Dashboard Akademik</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body">
-            <p>Ringkasan visual capaian akademik dan progres proyek menggunakan tabel semantik dan badge status.</p>
-            <ul class="modal-list">
-              <li>Tabel dengan <code>caption</code>, <code>thead</code>, <code>tbody</code>, <code>tfoot</code></li>
-              <li>Atribut <code>scope="col"</code> / <code>scope="row"</code> untuk aksesibilitas</li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalProyek4" tabindex="-1" aria-labelledby="modalProyek4Label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalProyek4Label">Proyek GitHub Pages</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body">
-            <p>Alur kerja Git terstruktur dengan branch <code>week3-bootstrap</code> dan publikasi otomatis melalui GitHub Pages.</p>
-            <ul class="modal-list">
-              <li>Commit message konvensional (<code>feat:</code>, <code>fix:</code>)</li>
-              <li>Deployment tanpa error 404</li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============ SECTION: RIWAYAT (TABEL + LISTS) ============ -->
-    <section id="riwayat" class="section-block alt-bg">
+    </section>
+ 
+    <!-- ============ RIWAYAT ============ -->
+    <section id="riwayat" class="section-block">
       <div class="container">
         <h2 class="section-title"><i class="bi bi-clipboard-data"></i> Riwayat Mata Kuliah &amp; Proyek</h2>
-
+ 
         <div class="table-responsive custom-table-wrap">
           <table class="table custom-table align-middle mb-0">
             <caption>Rekapitulasi Capaian Akademik &amp; Proyek Web</caption>
@@ -276,13 +134,13 @@
                 <th scope="row">2</th>
                 <td>Penguasaan CSS Lanjutan &amp; Bootstrap 5</td>
                 <td>Bootstrap 5.3, CSS Variables</td>
-                <td><span class="badge status-progress">Sedang Berjalan</span></td>
+                <td><span class="badge status-done">Selesai</span></td>
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td>Pengembangan Aplikasi Web</td>
-                <td>Flexbox, Grid, Git</td>
-                <td><span class="badge status-plan">Direncanakan</span></td>
+                <td>Arsitektur Web &amp; Dynamic CSR</td>
+                <td>JavaScript ES6+, Fetch API, JSON</td>
+                <td><span class="badge status-progress">Sedang Berjalan</span></td>
               </tr>
             </tbody>
             <tfoot>
@@ -293,98 +151,60 @@
             </tfoot>
           </table>
         </div>
-
-        <div class="row mt-5 g-4">
-          <div class="col-md-6">
-            <h3 class="list-heading">Pencapaian</h3>
-            <ul class="check-list">
-              <li>Menguasai struktur HTML5 semantik</li>
-              <li>Mengintegrasikan Bootstrap 5.3 &amp; Bootstrap Icons</li>
-              <li>Membangun formulir accessible dengan validasi native</li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <h3 class="list-heading">Rencana Belajar Berikutnya</h3>
-            <ol class="plan-list">
-              <li>Mendalami JavaScript DOM manipulation</li>
-              <li>Belajar integrasi backend &amp; API</li>
-              <li>Menerapkan uji aksesibilitas WCAG 2.2 penuh</li>
-            </ol>
-          </div>
-        </div>
       </div>
     </section>
-
-    <!-- ============ SECTION: FORMULIR LAYANAN & KONTAK ============ -->
-    <section id="kontak" class="section-block">
+ 
+    <!-- ============ FORMULIR — Decoupled REST Form Dispatch ============ -->
+    <section id="kontak" class="section-block alt-bg">
       <div class="container">
         <div class="card contact-card shadow-sm border-0">
           <div class="card-body p-4 p-md-5">
             <h2 class="section-title"><i class="bi bi-envelope-paper"></i> Formulir Konsultasi &amp; Layanan</h2>
-            <p class="section-desc">Silakan isi formulir di bawah ini dengan data yang valid.</p>
-
-            <form class="row g-3 needs-validation" novalidate>
-
+            <p class="section-desc">Formulir ini dikirim secara asinkron (Fetch POST) tanpa memuat ulang halaman.</p>
+ 
+            <form id="serviceForm" class="row g-3 needs-validation" novalidate>
+ 
               <fieldset class="form-fieldset col-12">
                 <legend class="form-legend">Data Identitas</legend>
-
                 <div class="row g-3">
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="nama" name="nama"
-                             placeholder="Nama Lengkap" required>
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" required>
                       <label for="nama">Nama Lengkap <span class="req">*</span></label>
                       <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
                     </div>
                   </div>
-
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="email" class="form-control" id="email" name="email"
-                             placeholder="nama@del.ac.id" required>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="nama@del.ac.id" required>
                       <label for="email">Email Kampus (@del.ac.id) <span class="req">*</span></label>
                       <div class="invalid-feedback">Masukkan alamat email yang valid.</div>
                     </div>
                   </div>
-
                   <div class="col-md-6">
                     <div class="input-group">
                       <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
                       <div class="form-floating">
-                        <input type="tel" class="form-control" id="telepon" name="telepon"
-                               placeholder="08123456789" pattern="[0-9]{10,13}" required>
+                        <input type="tel" class="form-control" id="telepon" name="telepon" placeholder="08123456789" pattern="[0-9]{10,13}" required>
                         <label for="telepon">Nomor WhatsApp <span class="req">*</span></label>
                         <div class="invalid-feedback">Gunakan format nomor 10–13 digit.</div>
                       </div>
                     </div>
                   </div>
-
-                  <div class="col-md-6">
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-bar-chart-fill"></i></span>
-                      <div class="form-floating">
-                        <input type="number" class="form-control" id="skala" name="skala"
-                               min="1" max="5" value="1">
-                        <label for="skala">Perkiraan Skala Proyek (1–5)</label>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </fieldset>
-
+ 
               <fieldset class="form-fieldset col-12">
                 <legend class="form-legend">Detail Permintaan</legend>
-
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label for="layanan" class="form-label">Jenis Layanan</label>
-                    <select id="layanan" name="layanan" class="form-select">
+                    <label for="layanan-pilihan" class="form-label">Jenis Layanan</label>
+                    <select id="layanan-pilihan" name="layanan" class="form-select">
                       <option value="frontend">Frontend Web Development</option>
                       <option value="uiux">UI/UX Design Review</option>
                       <option value="consultation">Konsultasi Tugas</option>
                     </select>
                   </div>
-
                   <div class="col-md-6">
                     <label class="form-label d-block">Metode Komunikasi Preferensi</label>
                     <div class="form-check form-check-inline">
@@ -396,16 +216,13 @@
                       <label class="form-check-label" for="prefWa">WhatsApp</label>
                     </div>
                   </div>
-
                   <div class="col-12">
                     <div class="form-floating">
-                      <textarea class="form-control" id="pesan" name="pesan" style="height: 120px"
-                                placeholder="Tuliskan detail kebutuhan Anda..." required></textarea>
+                      <textarea class="form-control" id="pesan" name="pesan" style="height: 120px" placeholder="Tuliskan detail kebutuhan Anda..." required></textarea>
                       <label for="pesan">Deskripsi Pertanyaan / Permintaan <span class="req">*</span></label>
                       <div class="invalid-feedback">Mohon jelaskan kebutuhan Anda.</div>
                     </div>
                   </div>
-
                   <div class="col-12">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="persetujuan" name="persetujuan" required>
@@ -417,55 +234,35 @@
                   </div>
                 </div>
               </fieldset>
-
+ 
               <div class="col-12">
                 <button type="submit" class="btn btn-brand w-100">Kirim Permintaan Konsultasi</button>
               </div>
-
+ 
             </form>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- ============ ASIDE ============ -->
-    <aside class="info-aside">
-      <div class="container">
-        <div class="note-box">
-          <h3><i class="bi bi-info-circle-fill"></i> Catatan Penting</h3>
-          <p>Layanan konsultasi ini diproses pada jam kerja operasional kampus Institut Teknologi Del (Senin–Jumat, 08.00–17.00 WIB).</p>
-        </div>
-      </div>
-    </aside>
-
+ 
   </main>
-
+ 
   <!-- ============ FOOTER ============ -->
   <footer class="main-footer">
     <div class="container text-center">
       <p class="mb-0">&copy; 2026 Grasia Gayatri Simanullang — S1 Sistem Informasi, Institut Teknologi Del.</p>
     </div>
   </footer>
-
+ 
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+ 
   <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Validasi visual Bootstrap sederhana -->
-  <script>
-    (function () {
-      'use strict';
-      var forms = document.querySelectorAll('.needs-validation');
-      Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    })();
-  </script>
-
+ 
+  <!-- Application Scripts: urutan penting — api-service dulu, app terakhir -->
+  <script src="js/api-service.js"></script>
+  <script src="js/app.js"></script>
+ 
 </body>
 </html>

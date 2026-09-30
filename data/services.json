@@ -1,0 +1,43 @@
+[
+  {
+    "id": "frontend",
+    "name": "Frontend Web Development",
+    "price": "Mulai dari Rp150.000",
+    "icon": "bi-code-slash",
+    "features": [
+      "Implementasi HTML5 semantik & Bootstrap 5",
+      "Desain responsif mobile-first",
+      "Optimasi aksesibilitas dasar (WCAG 2.2)"
+    ]
+  },
+  {
+    "id": "uiux",
+    "name": "UI/UX Design Review",
+    "price": "Mulai dari Rp100.000",
+    "icon": "bi-palette",
+    "features": [
+      "Audit hierarki visual & tipografi",
+      "Rekomendasi palet warna 60-30-10",
+      "Review konsistensi komponen UI"
+    ]
+  },
+  {
+    "id": "consultation",
+    "name": "Konsultasi Tugas",
+    "price": "Gratis untuk mahasiswa Del",
+    "icon": "bi-chat-dots",
+    "features": [
+      "Diskusi arsitektur proyek web",
+      "Review kode HTML/CSS/JS",
+      "Panduan debugging dasar"
+    ]
+  }
+]
+
+
+
+
+
+
+
+

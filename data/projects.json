@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "Personal Portfolio",
+    "category": "frontend",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop",
+    "description": "Halaman portofolio pribadi yang dibangun pada Minggu 2 menggunakan HTML5 semantik murni dan CSS custom tanpa framework, menerapkan Flexbox dan CSS Variables untuk theming.",
+    "metrics": {
+      "performance": 92,
+      "accessibility": 98
+    },
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "title": "Service Portal",
+    "category": "bootstrap",
+    "tags": [
+      "Bootstrap 5",
+      "CSS Variables"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&auto=format&fit=crop",
+    "description": "Portal layanan konsultasi yang direfaktor pada Minggu 3 menggunakan Bootstrap 5.3, lengkap dengan formulir Floating Labels dan validasi visual native.",
+    "metrics": {
+      "performance": 88,
+      "accessibility": 95
+    },
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "title": "Dashboard Akademik",
+    "category": "dataviz",
+    "tags": [
+      "Data Viz",
+      "Tabel Semantik"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop",
+    "description": "Visualisasi ringkas rekapitulasi nilai dan capaian mata kuliah menggunakan tabel HTML semantik dengan caption, thead, tbody, dan tfoot.",
+    "metrics": {
+      "performance": 90,
+      "accessibility": 96
+    },
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "title": "Proyek GitHub Pages",
+    "category": "devops",
+    "tags": [
+      "Git Workflow",
+      "CI/CD"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&auto=format&fit=crop",
+    "description": "Manajemen branching terstruktur dan publikasi otomatis melalui GitHub Pages, mendemonstrasikan alur kerja Git kolaboratif dari week2 hingga week4.",
+    "metrics": {
+      "performance": 85,
+      "accessibility": 94
+    },
+    "link": "#"
+  }
+]
